@@ -34,7 +34,7 @@ https://www.npmjs.com/package/inquirer
 
 ## Usage
 This application will generate README.md files
-<video src = "https://drive.google.com/file/d/1M-L8nC31xlkBDj8Vs8BwJJswX5afINV2/view?usp=sharing"> </video>
+![gif](Develop/utils/assets/ezgif.com-gif-maker.webm)
 
 ## Credits
 Starter code from 
