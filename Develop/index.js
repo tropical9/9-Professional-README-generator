@@ -1,6 +1,11 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require ('fs');
+const generateReadme = require("./utils/generateMarkdown");
+
+// const generateReadme = require ("./utils/generateMarkdown")
+// const writeFileAsync = util.promisify(fs.writeFile);
+
 
 // console.log ("README Generator");
 
@@ -8,84 +13,80 @@ const fs = require ('fs');
 
 // TODO: Create an array of questions for user input
 inquirer
-.prompt ([
-
+.prompt([
     {
         type: "input",
-        message: "What is the title?",
-        name: "##TITLE"
+        message: "What is the title of the project?",
+        name: "TITLE",
     },
 
     {
         type: "input",
-        message: "Enter description",
-        name: "##DESCRIPTION"
+        message: "Write a description of your project",
+        name: "##DESCRIPTION",
     },
     {
         type: "input",
         message: "Table of Contents",
-        name: "##TABLE OF CONTENTS"   
+        name: "##TABLE OF CONTENTS",   
     },
     {
         type: "input",
         message: "Enter installation instructions",
-        name: "##INSTALLATION"  
+        name: "##INSTALLATION", 
     },
     {
         type: "input",
         message: "Enter Usage",
-        name: "##USAGE"  
+        name: "##USAGE",  
     },
     {
-        type: "checkbox",
+        type: "list",
         message: "Select license",
-        name: "##LICENSE"  
+        choices: [
+            "Apache",
+            "Academic",
+            "GNU",
+            "ISC",
+            "MIT",
+            "Mozilla",
+            "Open"
+        ],
+        name: "##LICENSE",  
     },
     {
         type: "input",
         message: "Enter Contributing",
-        name: "##CONTRIBUTING"  
+        name: "##CONTRIBUTING",  
     },
     {
         type: "input",
         message: "Enter tests",
-        name: "##TESTS"  
+        name: "##TESTS",  
     }, 
     {
         type: "input",
         message: "Enter Questions:",
-        name: "##QUESTIONS"  
-    }
-
+        name: "##QUESTIONS",  
+    },
+    {
+        type: "input",
+        name: "username",
+        message: "Please enter your GitHub username: ",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "Please enter your email: ",
+    },
 ])
 
-// const questions = [
-    
-// ];
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
 
 
+.then((data) => {
+    const filename = `${data.TITLE.toLowerCase().split(' ').join('')}.md`;
 
-// GIVEN a command-line application that accepts user input
-// WHEN I am prompted for information about my application repository
-// THEN a high-quality, professional README.md is generated with the 
-// TITLE-- of my project and 
-//sections 
-//DESCRIPTION, // 
-//TABLE OF CONTENTS, //links will take me to the corresponding section of the readme
-//Installation,
-//Usage,
-//License,  //needs a badge, list of options , and notice is added that explains which license the application is covered under
-//Contributing,
-//Tests, 
-//Questions //will contain the github username with a link to my github profile, will contain email address with instructions of how to reach me with additional questions
-
-
+    fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+      err ? console.log(err) : console.log('Success!')
+    );
+  });
