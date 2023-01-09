@@ -34,7 +34,8 @@ https://www.npmjs.com/package/inquirer
 
 ## Usage
 This application will generate README.md files
-![gif](Develop/utils/assets/ezgif.com-gif-maker.webm)
+[ezgif.com-gif-maker.webm](https://user-images.githubusercontent.com/113566952/211257790-70ec36c9-31e0-4b21-880e-5d99d4dbd374.webm)
+
 
 ## Credits
 Starter code from 
